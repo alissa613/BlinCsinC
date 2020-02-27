@@ -1,0 +1,38 @@
+
+
+#login {
+  text-align: center;
+  color: red;
+}
+
+.card-container {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  overflow: auto;
+}
+.user-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-container > * {
+  width: 100%;
+}
+
+.password-container {
+  display: flex;
+  flex-direction: column;
+}
+.password-container > * {
+  width: 100%;
+}
+
+.password-right-align {
+  text-align: right;
+}
+
+#sign-in {
+  float: right;
+}

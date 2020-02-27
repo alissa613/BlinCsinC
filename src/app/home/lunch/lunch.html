@@ -1,0 +1,21 @@
+<mat-card class="card-container">
+  <h2>Current parameters</h2>
+  <div id="user-data">
+    <mat-form-field>
+      <mat-label>Select a cuisine</mat-label>
+      <mat-select [(value)]="selected">
+        <mat-option placeholder="currentCuisine" value="current">[preloaded from backend]</mat-option>
+        <mat-option value="option1">Mexican</mat-option>
+        <mat-option value="option2">American</mat-option>
+        <mat-option value="option3">Chinese</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p>You selected: {{ selected }}</p>
+  </div>
+  <mat-card class="card-container" id="button-card">
+    <button mat-icon-button id="button" aria-label="Example icon-button with a heart icon">
+      <mat-icon><img src="../../../assets/images/baseline-restaurant-24px.svg"/></mat-icon>
+    </button>
+  </mat-card>
+</mat-card>
+<br />
