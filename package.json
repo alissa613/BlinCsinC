@@ -13,10 +13,9 @@
   "dependencies": {
     "@angular/animations": "~8.2.14",
     "@angular/common": "~8.2.14",
-    "@angular/compiler": "^8.2.14",
+    "@angular/compiler": "~8.2.14",
     "@angular/core": "~8.2.14",
     "@angular/forms": "~8.2.14",
-    "@angular/material": "^9.1.0",
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
@@ -33,9 +32,9 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.803.25",
+    "@angular-devkit/build-angular": "~0.803.23",
     "@angular/cli": "~8.3.23",
-    "@angular/compiler-cli": "^8.2.14",
+    "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
     "@types/jasmine": "~3.5.1",
     "@types/jasminewd2": "~2.0.8",
@@ -52,6 +51,6 @@
     "protractor": "~5.4.2",
     "ts-node": "~8.6.2",
     "tslint": "~6.0.0",
-    "typescript": "^3.4.5"
+    "typescript": "~3.4.5"
   }
 }

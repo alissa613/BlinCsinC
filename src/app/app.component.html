@@ -1,12 +1,12 @@
-<mat-toolbar id="main-header" color="primary">
-  Vanguard
-  <nav>
-    <!--<button mat-button routerLink="/login">Login</button>
-    <button mat-button routerLink="/register">Register</button>-->
-    <button mat-button routerLink="/home">Home</button>
-    <button mat-button routerLink="/profile">Profile</button>
-    <button mat-button routerLink="/login">Log Out</button>
-  </nav>
-</mat-toolbar>
-
-<router-outlet></router-outlet>
+<div class="container-scroller">
+  <app-navbar></app-navbar>
+  <div class="container-fluid page-body-wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <router-outlet></router-outlet>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>
