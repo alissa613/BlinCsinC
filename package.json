@@ -14,6 +14,7 @@
     "@angular/compiler": "^9.0.7",
     "ajax-promises": "^1.0.3",
     "glamor": "^2.20.40",
+    "js-yaml": "^3.13.1",
     "neo4j-driver": "^4.0.2",
     "preact": "^8.2.5",
     "preact-compat": "^3.17.0",
@@ -21,6 +22,7 @@
     "react-ink": "^6.2.0",
     "react-router-dom": "^4.1.2",
     "react-toastify": "^2.0.0-rc.3",
+    "set-value": "^3.0.1",
     "typescript": "^3.8.3"
   },
   "devDependencies": {
