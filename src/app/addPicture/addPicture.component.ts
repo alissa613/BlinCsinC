@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AngularService } from '../angular.service';
+import { AngularService } from '../common/angular.service';
 
 @Component({
-  selector: 'main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss'] 
+  selector: 'addPicture',
+  templateUrl: './addPicture.component.html',
+  styleUrls: ['./addPicture.component.scss'] 
 }) 
-export class mainComponent implements OnInit {
+export class addPictureComponent implements OnInit {
   main: FormGroup;
   driver: any;
   results: any;

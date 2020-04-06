@@ -1,11 +1,11 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { mainComponent } from './main.componet';
-import { AngularService } from '../angular.service';
+import { mainComponent } from './main.component';
+import { AngularService } from '../common/angular.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
-export * from './main.componet';
-export * from '../angular.service';
+export * from './main.component';
+export * from '../common/angular.service';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule],

@@ -1,22 +1,22 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { newUserComponent } from './newUser.component';
+import { addPictureComponent } from './addPicture.component';
 import { AngularService } from '../common/angular.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
-export * from './newUser.component';
+export * from './addPicture.component';
 export * from '../common/angular.service';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule],
-  exports: [newUserComponent],
+  exports: [addPictureComponent],
   providers: [AngularService],
-  declarations: [newUserComponent]
+  declarations: [addPictureComponent]
 })
-export class NewUserModule {
+export class AddPictureModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: NewUserModule,
+      ngModule: AddPictureModule,
       providers: [AngularService]
     };
   }

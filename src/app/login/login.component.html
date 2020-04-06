@@ -4,12 +4,15 @@
     <input formControlName="username">
   </label>
   <br />
+  <h5 *ngIf="userError">Please enter your username</h5>
   <br />
   <label>Password:
     <br />
     <input formControlName="password">
   </label>
   <br />
+  <h5 *ngIf="passwordError">Please enter your password</h5>
+  <h5 *ngIf="incorrectError">Incorrect username or password</h5>
   <br />
   <button type="submit">Log In</button>
   <button type="button" routerLink="/newUser">New User</button>
@@ -17,27 +20,3 @@
 
 <br />
 <br />
-
-<!-- <form [formGroup]="queryForm" (ngSubmit)="run()">
-  <label>Cypher Query:
-    <br />
-    <textarea formControlName="query" placeholder="MATCH (o:Object {attrib: {value}}) RETURN o"></textarea>
-  </label>
-  <br />
-  <br />
-  <label>Parameters JSON:
-    <br />
-    <textarea formControlName="params" placeholder='{ "value": "value" }'></textarea>
-  </label>
-  <br />
-  <br />
-  <button type="submit">Run</button>
-</form>
-
-<br />
-<br />
-
-Results:
-<pre>
-{{results | json}}
-</pre>  -->

@@ -7,7 +7,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { newUserComponent } from './newUser/newUser.component'
-import { mainComponent } from './main/main.componet'
+import { mainComponent } from './main/main.component'
+import { addPictureComponent } from './addPicture/addPicture.component'
+import { libraryComponent } from './library/library.component'
+import { takePictureComponent } from './takePicture/takePicture.component'
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { mainComponent } from './main/main.componet'
     AppComponent,
     LoginComponent,
     newUserComponent,
-    mainComponent
+    mainComponent,
+    addPictureComponent,
+    libraryComponent,
+    takePictureComponent
   ],
   imports: [
     BrowserModule,

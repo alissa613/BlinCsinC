@@ -12,6 +12,3 @@ Dependencies:
   To view the database:
    - http://localhost:7474
    - If it is not loading, text me and I'll start it up again
-
-
-
