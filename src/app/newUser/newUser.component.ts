@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { AngularService } from '../angular.service';
+import { AngularService } from '../common/angular.service';
 import { Router } from '@angular/router';
+import { GlobalConstants } from '../common/global-constants'
 
 @Component({
   selector: 'newUser',
@@ -110,10 +111,12 @@ export class newUserComponent implements OnInit {
       });
 
       if ((this.accountError == false ) && (this.usernameError == false)){
-        const query3 = 'CREATE (p:User {firstName: "' + firstName + '", lastName: "' + lastName + '", username: "'+ username +'", password: "'+ password +'"})'
+        const query3 = 'CREATE (p:User {firstName: "' + firstName + '", lastName: "' + lastName + '", username: "'+ username +'", password: "'+ password +'"}) RETURN id(p)'
 
         await this.neo4j.run(query3).then(res => {
           this.results = res
+          console.log(res[0][0])
+          GlobalConstants.id = res[0][0]
         }); 
 
         this.router.navigate(['/main'])
