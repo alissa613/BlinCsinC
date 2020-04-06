@@ -1,0 +1,37 @@
+<form [formGroup]="newUser" (ngSubmit)="createUser()">
+<label>First Name:
+  <br />
+  <input formControlName="firstName">
+</label>
+<br />
+<h5 *ngIf="firstError">Please enter your first name</h5>
+<br />
+<label>Last Name:
+  <br />
+  <input formControlName="lastName">
+</label>
+  <br />
+  <h5 *ngIf="lastError">Please enter your last name</h5>
+  <br />
+  <label>Username:
+    <br />
+    <input formControlName="username">
+  </label>
+  <br />
+  <h5 *ngIf="userError">Username must be longer than 3 characters</h5>
+  <br />
+  <label>Password:
+    <br />
+    <input formControlName="password">
+  </label>
+  <br />
+  <h5 *ngIf="passError">Password must be longer than 3 characters</h5>
+  <h5 *ngIf="accountError">You already have an account!</h5>
+  <h5 *ngIf="usernameError">This username is already in use!</h5>
+  <br />
+  <button type="submit">Create Account</button>
+  <button type="button" routerLink="/login">Return to Login</button>
+</form>
+
+<br />
+<br />
