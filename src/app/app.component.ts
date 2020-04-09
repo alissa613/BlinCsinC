@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { GlobalConstants } from './common/global-constants';
 import { Router } from '@angular/router';
+import { libraryComponent } from './library';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,10 @@ export class AppComponent {
   title = 'app';
   id : number;
   noId: boolean;
+  main= true;
+  library: boolean;
+  addPicture: boolean;
+  takePicture: boolean;
 
   constructor(private router: Router){}
 
@@ -30,5 +35,35 @@ export class AppComponent {
   logOut(){
     GlobalConstants.id = 0;
   }
+
+  changeMain(){
+    this.main = true;
+    this.library = false;
+    this.takePicture = false;
+    this.addPicture = false;
+  }
+
+  changeLibrary(){
+    this.main = false;
+    this.library = true;
+    this.takePicture = false;
+    this.addPicture = false;
+  }
+
+  changeTakePicture(){
+    this.main = false;
+    this.library = false;
+    this.takePicture = true;
+    this.addPicture = false;
+  }
+
+  changeAddPicture(){
+    this.main = false;
+    this.library = false;
+    this.takePicture = false;
+    this.addPicture = true;
+  }
+
+
   
 }

@@ -24,36 +24,15 @@ export class newUserComponent implements OnInit {
 
   ngOnInit() {
     this.createForms();
-    this.connect()
   }
 
   createForms() {
     this.newUser = this.fb.group({
       firstName: '',
-      lastName:'',
+      lastName: '',
       username: '',
       password: ''
     });
-  }
-
-  connect() {
-    this.neo4j
-      .connect(
-        'http://localhost:7474',
-        'neo4j',
-        'BlinCsinC123',
-        true
-      )
-      .then(driver => {
-        if (driver) {
-          console.log(`Successfully connected`);
-        }
-      });
-  }
-
-  disconnect() {
-    this.neo4j.disconnect();
-    console.log("disconnected")
   }
 
   length3Test(word: any){

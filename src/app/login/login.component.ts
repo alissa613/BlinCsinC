@@ -42,15 +42,9 @@ export class LoginComponent implements OnInit {
       )
       .then(driver => {
         if (driver) {
-          console.log(driver)
-          console.log(`Successfully connected to ${this.loginForm.value.url}`);
+          console.log(`Successfully connected!`);
         }
       });
-  }
-
-  disconnect() {
-    this.neo4j.disconnect();
-    console.log("disconnected")
   }
 
   lengthTest(word: any){

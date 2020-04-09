@@ -1,9 +1,9 @@
-<div class="topnav" *ngIf="noId">
-    <a class="active" routerLink="/main">Home</a>
-    <a routerLink="/library">Your Library</a>
-    <a routerLink="/addPicture">Add Photos</a>
+<div id="topnav" class="topnav" *ngIf="noId">
+    <a class="active" (click)="changeMain()" [ngClass]="{active: main}" routerLink="/main">Home</a>
+    <a (click)="changeLibrary()" [ngClass]="{active: library}" routerLink="/library">Your Library</a>
+    <a (click)="changeAddPicture()" [ngClass]="{active: addPicture }" routerLink="/addPicture">Add Photos</a>
     <div class="topnav-right">
-      <a routerLink="/takePicture">Take a Picture</a>
+      <a (click)="changeTakePicture()" [ngClass]="{active: takePicture }" routerLink="/takePicture">Take a Picture</a>
       <a routerLink="/login" (click)="logOut()">Log Out</a>
     </div>
   </div>

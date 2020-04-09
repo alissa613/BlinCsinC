@@ -11,66 +11,135 @@ export class libraryComponent implements OnInit {
   main: FormGroup;
   driver: any;
   results: any;
+  calmness = false;
+  happiness = false;
+  laughter = false;
+  nostalgia = false;
+  all: boolean;
+  images=[];
+  calmnessIm=[];
+  happinessIm=[];
+  laughterIm=[];
+  nostalgiaIm=[];
 
   constructor(private fb: FormBuilder, private neo4j: AngularService) {}
 
   ngOnInit() {
-    this.createForms();
-    this.connect()
-  }
+    this.all = true;
 
-  createForms() {
-    this.main = this.fb.group({
-      firstName: '',
-      lastName:'',
-      username: '',
-      password: ''
-    });
-  }
+    const query = 'MATCH (a:Image) RETURN a.location'
 
-  connect() {
-    this.neo4j
-      .connect(
-        'http://localhost:7474',
-        'neo4j',
-        'BlinCsinC123',
-        true
-      )
-      .then(driver => {
-        if (driver) {
-          console.log(`Successfully connected`);
+      this.neo4j.run(query).then(res => {
+        this.results = res
+        var length = this.results.length
+        for(var i=0; i<length; i++){
+          this.images.push(res[i][0])
         }
       });
   }
 
-  disconnect() {
-    this.neo4j.disconnect();
-    console.log("disconnected")
-  }
+  calmnessChange(){
+    this.all = false;
+    this.calmness = !this.calmness 
 
-  createUser(){
-    const formModel = this.main.value;
-    const firstName = formModel.firstName;
-    const lastName = formModel.lastName;
-    const username = formModel.username;
-    const password = formModel.password; 
+    const query = 'MATCH (a:Image) WHERE a.emotion= "calmness" RETURN a.location'
 
-    const query = 'CREATE (p:User {firstName: "' + firstName + '", lastName: "' + lastName + '", username: "'+ username +'", password: "'+ password +'"})'
-
-    console.log(query)
     this.neo4j.run(query).then(res => {
-      this.results = res
-      console.log(res);
-      if (this.results.length == 0){
-        console.log("Incorrect username or password")
+      this.results = res;
+      var length = this.results.length
+      if(this.calmness){
+        for(var i=0; i<length; i++){
+          this.calmnessIm.push(res[i][0])
+        }
       }
       else{
-        console.log("Correct username and password")
+        for(var i=0; i<length; i++){
+          this.calmnessIm.pop()
+        }
       }
     });
+
+    if (this.calmness==false && this.laughter==false && this.happiness==false && this.nostalgia==false){
+      this.all = true;
+    }
   }
 
-  newLogin() {
+  happinessChange(){
+    this.all = false;
+    this.happiness = !this.happiness 
+
+    const query = 'MATCH (a:Image) WHERE a.emotion= "happiness" RETURN a.location'
+
+    this.neo4j.run(query).then(res => {
+      this.results = res;
+      var length = this.results.length
+      if(this.happiness){
+        for(var i=0; i<length; i++){
+          this.happinessIm.push(res[i][0])
+        }
+      }
+      else{
+        for(var i=0; i<length; i++){
+          this.happinessIm.pop()
+        }
+      }
+    });
+
+    if (this.calmness==false && this.laughter==false && this.happiness==false && this.nostalgia==false){
+      this.all = true;
+    }
+  }
+
+  laughterChange(){
+    this.all = false;
+    this.laughter = !this.laughter 
+
+    const query = 'MATCH (a:Image) WHERE a.emotion= "laughter" RETURN a.location'
+
+    this.neo4j.run(query).then(res => {
+      this.results = res;
+      var length = this.results.length
+      if(this.laughter){
+        for(var i=0; i<length; i++){
+          this.laughterIm.push(res[i][0])
+        }
+      }
+      else{
+        for(var i=0; i<length; i++){
+          this.laughterIm.pop()
+        }
+      }
+    });
+
+    if (this.calmness==false && this.laughter==false && this.happiness==false && this.nostalgia==false){
+      this.all = true;
+    }
+  }
+
+  nostalgiaChange(){
+    this.all = false;
+    this.nostalgia = !this.nostalgia 
+
+    const query = 'MATCH (a:Image) WHERE a.emotion= "nostalgia" RETURN a.location'
+
+    this.neo4j.run(query).then(res => {
+      this.results = res;
+      var length = this.results.length
+      if(this.nostalgia){
+        for(var i=0; i<length; i++){
+          this.nostalgiaIm.push(res[i][0])
+        }
+      }
+      else{
+        for(var i=0; i<length; i++){
+          this.nostalgiaIm.pop()
+        }
+      }
+    });
+
+    if (this.calmness==false && this.laughter==false && this.happiness==false && this.nostalgia==false){
+      this.all = true;
+    }
     
   }
 
