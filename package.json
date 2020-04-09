@@ -1,12 +1,11 @@
 {
   "author": {
-    "name": "Maxim Salnikov",
-    "email": "salnikov@gmail.com"
+    "name": "Alissa Vining",
+    "email": "ajvining613@gmail.com"
   },
-  "name": "angular-neo4j",
-  "description": "Neo4j Bolt driver wrapper for Angular",
+  "name": "blincsinc",
+  "description": "Web app for evoking emotion",
   "version": "0.8.0",
-  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -17,7 +16,7 @@
     "build:lib": "gulp --gulpfile gulpfile.lib.js",
     "version": "sync-json -v --property version --source package.json src/lib/package.json"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^6.0.0-rc.1",
     "@angular/common": "^6.0.0-rc.1",
