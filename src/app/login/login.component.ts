@@ -35,9 +35,9 @@ export class LoginComponent implements OnInit {
   connect() {
     this.neo4j
       .connect(
-        'http://localhost:7474',
-        'neo4j',
-        'BlinCsinC123',
+        'https://hobby-jmlindhpafecgbkennlcgpel.dbs.graphenedb.com:24780/db/data/',
+        'production',
+        'b.6mWulGd8CK3p.tvpM1u3239zeokrM',
         true
       )
       .then(driver => {

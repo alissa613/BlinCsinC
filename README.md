@@ -2,7 +2,7 @@ Install:
  - Visual Studio Code
  - Node.js
  - Git Client
- - Neo4j Desktop/Community
+ - Neo4j Desktop
 
 In Visual Studio Code:
  * Set git bash as default terminal in VS:
@@ -20,16 +20,20 @@ In Visual Studio Code:
 
  * Install dependencies
     - npm install -g npm@6.0.1
-    - npm install @angular/compiler-cli
-    - npm install --save-dev @angular-devkit/build-angular
-    - npm install typescript
-    - npm install @angular/compiler
+    - npm install node-sass
+    - npm install --ignore-scripts=true
     - npm install neo4j-driver
-    - npm link
+
+ * Set up Database:
+    - Open neo4j Desktop
+    - Click on add database, connect to remote graph
+    - Database name: BlinCsinC
+    - ConnectURL: bolt://hobby-jmlindhpafecgbkennlcgpel.dbs.graphenedb.com:24787
+    - Click username/password authentication
+    - Username: production
+    - Password: b.6mWulGd8CK3p.tvpM1u3239zeokrM
+    - Connect to database
+    - Everytime you run the app, you have to also have the database running!
 
  To run in dev:
   - ng serve
-
-  To view the database:
-   - http://localhost:7474
-   - If it is not loading, text me and I'll start it up again

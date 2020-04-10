@@ -21,7 +21,7 @@ export class AppComponent {
 
   ngAfterContentChecked(){
     this.id = GlobalConstants.id;
-    if(this.id == 0){
+    if(this.id == -1){
       this.noId = false
       if((window.location.href != 'http://localhost:4200/login') && (window.location.href != 'http://localhost:4200/newUser')){
         this.router.navigate(['/login'])
@@ -33,7 +33,7 @@ export class AppComponent {
   }
 
   logOut(){
-    GlobalConstants.id = 0;
+    GlobalConstants.id = -1;
   }
 
   changeMain(){

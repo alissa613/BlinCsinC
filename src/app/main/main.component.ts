@@ -20,7 +20,7 @@ export class mainComponent implements OnInit {
   
   test(){
     console.log("Test")
-    const query = 'MATCH (l:User) WHERE l.username= "ajv5282" return id(l)'
+    const query = 'MATCH (l:User) WHERE l.username= "aaaa" return id(l)'
 
     this.neo4j.run(query).then(res => {
       this.results = res
