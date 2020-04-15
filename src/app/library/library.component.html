@@ -1,37 +1,36 @@
-  <div class="row">
-    <ul>
+  <ul>
       <li><a (click)="calmnessChange()" [ngClass]="{active: calmness}">Calmness</a></li>
       <li><a (click)="happinessChange()" [ngClass]="{active: happiness}">Happiness</a></li>
       <li><a (click)="laughterChange()" [ngClass]="{active: laughter}">Laughter</a></li>
       <li><a (click)="nostalgiaChange()" [ngClass]="{active: nostalgia}">Nostalgia</a></li>
-    </ul>
-
-    <div style="margin-left:25%;padding:1px 16px" *ngIf=all>
+  </ul>
+  <div class="row">
+    <div style="margin-left:25%;margin-right:0%;padding:1px 16px" *ngIf=all>
       <div class="column" *ngFor= "let image of images">
         <img [src]="image" width="200px" height="200px"/>
       </div>
     </div>
 
-    <div style="margin-left:25%;padding:1px 16px" *ngIf=calmness >
+    <div style="margin-left:25%;margin-right:0%;padding:1px 16px" *ngIf=calmness >
       <div class="column" *ngFor= "let image of calmnessIm">
         <img [src]="image" width="200px" height="200px"/>
       </div>
     </div>
 
     
-    <div  style="margin-left:25%;padding:1px 16px" *ngIf=happiness>
+    <div  style="margin-left:25%;margin-right:0%;padding:1px 16px" *ngIf=happiness>
       <div class= "column" *ngFor= "let image of happinessIm">
         <img [src]="image" width="200px" height="200px"/>
       </div>
     </div>
     
-    <div  style="margin-left:25%;padding:1px 16px" *ngIf=laughter>
+    <div  style="margin-left:25%;margin-right:0%;padding:1px 16px" *ngIf=laughter>
       <div class = "column" *ngFor= "let image of laughterIm">
         <img [src]="image" width="200px" height="200px"/>
       </div>
     </div>
     
-    <div  style="margin-left:25%;padding:1px 16px" *ngIf=nostalgia>
+    <div  style="margin-left:25%;margin-right:0%;padding:1px 16px" *ngIf=nostalgia>
       <div class = "column"*ngFor= "let image of nostalgiaIm">
         <img [src]="image" width="200px" height="200px"/>
       </div>
