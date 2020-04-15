@@ -1,4 +1,61 @@
   <div class="main">
-    <h3>Yay Take Picture page!</h3>
+    <form (ngSubmit)="emotionSelect()" *ngIf="emotionPage">  
+      <p>Please select your emotion:</p>
+      <input type="radio" id="laughter" name="emotion" value="laughter">
+      <label for="age1">Laughter</label><br>
+      <input type="radio" id="happiness" name="emotion" value="happiness">
+      <label for="age2">Happiness</label><br>  
+      <input type="radio" id="calmness" name="emotion" value="calmness">
+      <label for="age3">Calmness</label><br>
+      <input type="radio" id="nostalgia" name="emotion" value="nostalgia">
+      <label for="age3">Nostalgia</label><br>
+      <h5 *ngIf="emotionError">Please select an emotion</h5><br>
+      <button type="submit">Next Page</button>
+    </form>
+
+    <form (ngSubmit)="whatPictureSelect()" *ngIf="whatPicturePage">
+      <p>Do you have a specific image you would like to use?</p>
+      <input type="radio" id="specific" name="picture" value="specific">
+      <label for="specific">Specific Image</label><br>
+      <input type="radio" id="random" name="picture" value="random">
+      <label for="random">Random Image</label><br>
+      <h5 *ngIf="specificError">Please select specific or random</h5><br>
+      <button type="button" (click)="resetEmotion()">Previous Page</button>
+      <button type="submit">Next Page</button>
+    </form> 
+
+    <form (ngSubmit)="selectImage()" *ngIf="pickImagePage">
+      <h2>Please select which image you would like to use</h2>
+      <div class="row">
+        <div style="padding:1px 16px">
+          <div class="column" *ngFor= "let image of images">
+            <input type ="radio" name="images" [id]="image">
+            <label><img [src]="image" width="200px" height="200px"/></label>            
+          </div>
+        </div>
+      </div>
+      <h5 *ngIf="imageError">Please select an image</h5><br>
+      <button type="button" (click)="resetWhatPicture()">Previous Page</button>
+      <button type="submit">Next Page</button>
+    </form>
+
+    <form (ngSubmit)="rules()" *ngIf="rulesPage">
+      <p>In order for everything to work you need to make sure: </p>
+      <ol>
+        <li>You have a raspberry pi connected to your laptop, camera, and projector</li>
+        <li>Any other things we may need</li>
+        <li>Idk what to do because we don't have a raspberry pi yet</li>
+      </ol> 
+      <button type="button" (click)="resetImageSelect()">Previous Page</button>
+      <button type="submit">Next Page</button>
+    </form>
+
+    <form (ngSubmit)="resetEverything()" *ngIf="takePicturePage">
+      <img [src]="image" width="600px" height="600px">
+      <br><br>
+      <button type="button" (click)="resetRules()">Previous Page</button>
+      <button type="submit">Restart</button>
+    </form>
+
   </div>
   
