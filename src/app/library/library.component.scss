@@ -40,3 +40,8 @@ li a:hover:not(.active) {
   clear: both;
   display: table;
 }
+
+.active{
+  background-color: #4CAF50;
+  color: white;
+}

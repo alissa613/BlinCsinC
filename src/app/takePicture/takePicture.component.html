@@ -1,16 +1,12 @@
   <div class="main">
     <form (ngSubmit)="emotionSelect()" *ngIf="emotionPage">  
       <p>Please select your emotion:</p>
-      <input type="radio" id="laughter" name="emotion" value="laughter">
-      <label for="age1">Laughter</label><br>
-      <input type="radio" id="happiness" name="emotion" value="happiness">
-      <label for="age2">Happiness</label><br>  
-      <input type="radio" id="calmness" name="emotion" value="calmness">
-      <label for="age3">Calmness</label><br>
-      <input type="radio" id="nostalgia" name="emotion" value="nostalgia">
-      <label for="age3">Nostalgia</label><br>
+      <div *ngFor= "let emotion of emotions">
+        <input type ="radio" name="emotions" [id]="emotion">
+        <label>{{emotion}}</label>            
+      </div>
       <h5 *ngIf="emotionError">Please select an emotion</h5><br>
-      <button type="submit">Next Page</button>
+      <button type="submit">Next Page</button> 
     </form>
 
     <form (ngSubmit)="whatPictureSelect()" *ngIf="whatPicturePage">
