@@ -23,6 +23,7 @@ export class takePictureComponent implements OnInit {
   specific: String;
   image: String;
   images = [];
+  emotions = [];
 
   constructor(private fb: FormBuilder, private neo4j: AngularService) {}
 
@@ -32,6 +33,7 @@ export class takePictureComponent implements OnInit {
     this.pickImagePage = false;
     this.rulesPage = false;
     this.takePicturePage = false;
+    this.loadEmotion();
   }
 
   emotionSelect(){
@@ -39,10 +41,11 @@ export class takePictureComponent implements OnInit {
     for (var i = 0; i< ele.length; i++){
       if(ele[i].type=="radio"){
         if(ele[i].checked){
-          this.emotion = ele[i].value;
+          this.emotion = ele[i].id;
         }
       }
     }
+    console.log(this.emotion)
     if(this.emotion == undefined){
       this.emotionError = true;
     }
@@ -148,11 +151,11 @@ export class takePictureComponent implements OnInit {
     this.image = undefined;
   }
 
-  loadSelectImage(){
+  async loadSelectImage(){
     this.images = [];
     const query = 'MATCH (a:Image) WHERE a.emotion= "' + this.emotion + '" RETURN a.location';
 
-    this.neo4j.run(query).then(res => {
+    await this.neo4j.run(query).then(res => {
       this.results = res;
       var length = this.results.length
       if(this.images){
@@ -168,14 +171,30 @@ export class takePictureComponent implements OnInit {
     });
   }
 
-  loadRandomImage(){
+  async loadRandomImage(){
     const query = 'MATCH (a:Image) WHERE a.emotion= "' + this.emotion + '" RETURN a.location';
 
-    this.neo4j.run(query).then(res => {
+    await this.neo4j.run(query).then(res => {
       this.results = res;
       var length = this.results.length
       var i = Math.floor(Math.random() * Math.floor(length));
       this.image = res[i][0]
+    });
+  }
+
+  async loadEmotion(){
+    this.emotions = [];
+    const query = 'MATCH (a:Image) RETURN a.emotion';
+
+    await this.neo4j.run(query).then(res => {
+      this.results = res;
+      var length = this.results.length
+      for(var i=0; i<length; i++){
+        var found = this.emotions.includes(res[i][0]);
+        if (!found){
+          this.emotions.push(res[i][0])
+        }
+      }
     });
   }
 

@@ -11,136 +11,113 @@ export class libraryComponent implements OnInit {
   main: FormGroup;
   driver: any;
   results: any;
-  calmness = false;
-  happiness = false;
-  laughter = false;
-  nostalgia = false;
-  all: boolean;
-  images=[];
-  calmnessIm=[];
-  happinessIm=[];
-  laughterIm=[];
-  nostalgiaIm=[];
+  totalLength = 0;
+  selected = [];
+  images=[];          // array of images we are currently viewing
+  imageEmotions = []; //array of emotions we are currently viewing
+  removeImage = [];   // array of images to be removed
+  removeEmotion = []; // array of emotions to be removed
+  emotions = [];      // array of all emotions
+  allImages = [];     //array of all images
+  allEmotions = [];   //array of all image emotions
 
   constructor(private fb: FormBuilder, private neo4j: AngularService) {}
 
   ngOnInit() {
-    this.all = true;
-
-    const query = 'MATCH (a:Image) RETURN a.location'
+    var query = 'MATCH (a:Image) RETURN a.location, a.emotion'
 
       this.neo4j.run(query).then(res => {
-        this.results = res
-        var length = this.results.length
+        this.results = res;
+        console.log(res)
+        var length = this.results.length;
+        this.totalLength = length;
         for(var i=0; i<length; i++){
-          this.images.push(res[i][0])
+          this.allImages.push(res[i][0])
+          this.allEmotions.push(res[i][1])
         }
       });
-  }
 
-  calmnessChange(){
-    this.all = false;
-    this.calmness = !this.calmness 
+    this.images = this.allImages; // on start, all images are displayed
+    this.imageEmotions = this.allEmotions; // on start, all emotions are displayed
+    this.selected = this.allEmotions;
 
-    const query = 'MATCH (a:Image) WHERE a.emotion= "calmness" RETURN a.location'
-
-    this.neo4j.run(query).then(res => {
-      this.results = res;
-      var length = this.results.length
-      if(this.calmness){
-        for(var i=0; i<length; i++){
-          this.calmnessIm.push(res[i][0])
-        }
-      }
-      else{
-        for(var i=0; i<length; i++){
-          this.calmnessIm.pop()
-        }
-      }
-    });
-
-    if (this.calmness==false && this.laughter==false && this.happiness==false && this.nostalgia==false){
-      this.all = true;
-    }
-  }
-
-  happinessChange(){
-    this.all = false;
-    this.happiness = !this.happiness 
-
-    const query = 'MATCH (a:Image) WHERE a.emotion= "happiness" RETURN a.location'
+    query = 'MATCH (a:Image) RETURN a.emotion'; // creates array of all emotions used
 
     this.neo4j.run(query).then(res => {
       this.results = res;
-      var length = this.results.length
-      if(this.happiness){
-        for(var i=0; i<length; i++){
-          this.happinessIm.push(res[i][0])
+      var length = this.results.length;
+      for(var i=0; i<length; i++){
+        var found = this.emotions.includes(res[i][0]);
+        if (!found){
+          this.emotions.push(res[i][0])
         }
       }
-      else{
-        for(var i=0; i<length; i++){
-          this.happinessIm.pop()
-        }
-      }
-    });
+    })
+  }
 
-    if (this.calmness==false && this.laughter==false && this.happiness==false && this.nostalgia==false){
-      this.all = true;
+  async emotionChange(emotion){
+    this.removeImage = [];   // array of images to be removed
+    this.removeEmotion = []; // array of emotions to be removed
+
+    if (this.totalLength == this.images.length){ //if all images were displayed before this change
+      for(var i = 0; i < this.images.length; i++){ 
+        if(emotion != this.imageEmotions[i]){ 
+          this.removeImage.push(this.images[i])
+          this.removeEmotion.push(this.imageEmotions[i])
+        }
+      }
+
+      for (var x=0; x<this.removeImage.length; x++){
+        this.images = this.images.filter(item => item != this.removeImage[x])
+      }
+
+      for (var y=0; y< this.removeEmotion.length;y++){
+        this.imageEmotions = this.imageEmotions.filter(item => item != this.removeEmotion[y])
+      }
+      this.selected = [];
+      this.selected.push(emotion);
+    }
+
+    else if (this.images.length != this.totalLength){ //if only part of the images are currently showing
+      var found = this.imageEmotions.includes(emotion);
+      if (found) { //if emotion already displayed, remove it
+        for(var i = 0; i < this.images.length; i++){ 
+          if(emotion == this.imageEmotions[i]){ 
+            this.removeImage.push(this.images[i])
+            this.removeEmotion.push(this.imageEmotions[i])
+          }
+        }
+
+        for (var x=0; x<this.removeImage.length; x++){
+          this.images = this.images.filter(item => item != this.removeImage[x])
+        }
+  
+        for (var y=0; y< this.removeEmotion.length;y++){
+          this.imageEmotions = this.imageEmotions.filter(item => item != this.removeEmotion[y])
+        }
+
+        this.selected = this.selected.filter(item => item != emotion)
+      }
+
+      else { // if emotion is not displayed yet, add it
+        for(var i =0; i <this.allImages.length;i++){
+          if(emotion == this.allEmotions[i]){
+            this.images.push(this.allImages[i])
+            this.imageEmotions.push(this.allEmotions[i])
+          }
+        }
+        this.selected.push(emotion);
+      }
+    }
+
+    if (this.images.length == 0) { //if all emotions are not selected, automatically display all images 
+      this.images = this.allImages;
+      this.imageEmotions = this.allEmotions;
+      this.selected = this.allEmotions;
     }
   }
 
-  laughterChange(){
-    this.all = false;
-    this.laughter = !this.laughter 
-
-    const query = 'MATCH (a:Image) WHERE a.emotion= "laughter" RETURN a.location'
-
-    this.neo4j.run(query).then(res => {
-      this.results = res;
-      var length = this.results.length
-      if(this.laughter){
-        for(var i=0; i<length; i++){
-          this.laughterIm.push(res[i][0])
-        }
-      }
-      else{
-        for(var i=0; i<length; i++){
-          this.laughterIm.pop()
-        }
-      }
-    });
-
-    if (this.calmness==false && this.laughter==false && this.happiness==false && this.nostalgia==false){
-      this.all = true;
-    }
+  isActive(emotion){
+    return this.selected.includes(emotion);
   }
-
-  nostalgiaChange(){
-    this.all = false;
-    this.nostalgia = !this.nostalgia 
-
-    const query = 'MATCH (a:Image) WHERE a.emotion= "nostalgia" RETURN a.location'
-
-    this.neo4j.run(query).then(res => {
-      this.results = res;
-      var length = this.results.length
-      if(this.nostalgia){
-        for(var i=0; i<length; i++){
-          this.nostalgiaIm.push(res[i][0])
-        }
-      }
-      else{
-        for(var i=0; i<length; i++){
-          this.nostalgiaIm.pop()
-        }
-      }
-    });
-
-    if (this.calmness==false && this.laughter==false && this.happiness==false && this.nostalgia==false){
-      this.all = true;
-    }
-    
-  }
-
 }
