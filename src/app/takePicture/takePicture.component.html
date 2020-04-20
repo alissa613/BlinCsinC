@@ -38,20 +38,24 @@
     <form (ngSubmit)="rules()" *ngIf="rulesPage">
       <p>In order for everything to work you need to make sure: </p>
       <ol>
-        <li>You have a raspberry pi connected to your laptop, camera, and projector</li>
-        <li>Any other things we may need</li>
-        <li>Idk what to do because we don't have a raspberry pi yet</li>
+        <li>You have a raspberry pi and projector are on.</li>
+        <li>Your raspberry pi is connected to the projector via the HDMI cable.</li>
+        <li>Camera feature once figured out.</li>
       </ol> 
       <button type="button" (click)="resetImageSelect()">Previous Page</button>
-      <button type="submit">Next Page</button>
+      <button type="submit" href="common/displayImage.bat">Next Page</button>
     </form>
 
     <form (ngSubmit)="resetEverything()" *ngIf="takePicturePage">
-      <img [src]="image" width="600px" height="600px">
+      <!--<img [src]="image" width="200px" height="200px">-->
+      <h2>When you are ready, press the "Take Picture" button to display the image!</h2>
+      <h4>If message pops up labeled IntraLaunch Demonstration, click OK to continue</h4>
       <br><br>
+      <button type="button" (click)="f()">Take Picture</button>
       <button type="button" (click)="resetRules()">Previous Page</button>
       <button type="submit">Restart</button>
     </form>
 
   </div>
+    
   

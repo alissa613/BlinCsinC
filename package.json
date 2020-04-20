@@ -16,6 +16,9 @@
     "build:lib": "gulp --gulpfile gulpfile.lib.js",
     "version": "sync-json -v --property version --source package.json src/lib/package.json"
   },
+  "browser": {
+    "child_process": false
+  },
   "private": false,
   "dependencies": {
     "@angular/animations": "^6.0.0-rc.1",
@@ -29,10 +32,15 @@
     "@angular/router": "^6.0.0-rc.1",
     "core-js": "^2.5.4",
     "fs-extra": "^6.0.0",
+    "ibmiotf": "^0.2.41",
+    "javascript": "^1.0.0",
     "natives": "^1.1.6",
     "neo4j-driver": "^1.7.6",
+    "node-cmd": "^3.0.0",
     "node-sass": "^4.13.1",
+    "python3": "0.0.1",
     "rxjs": "^6.0.0-rc.0",
+    "temp-dir": "^2.0.0",
     "zone.js": "^0.8.24"
   },
   "devDependencies": {
@@ -42,7 +50,7 @@
     "@angular/language-service": "^6.0.0-rc.1",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "~8.9.4",
+    "@types/node": "^8.9.5",
     "codelyzer": "~4.2.1",
     "del": "^3.0.0",
     "fs": "0.0.1-security",

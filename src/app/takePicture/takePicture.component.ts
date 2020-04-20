@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AngularService } from '../common/angular.service';
 
+declare var batch: any;
+
 @Component({
   selector: 'takePicture',
   templateUrl: './takePicture.component.html',
@@ -22,8 +24,10 @@ export class takePictureComponent implements OnInit {
   emotion: String;
   specific: String;
   image: String;
+  piImage: String;
   images = [];
   emotions = [];
+
 
   constructor(private fb: FormBuilder, private neo4j: AngularService) {}
 
@@ -34,6 +38,10 @@ export class takePictureComponent implements OnInit {
     this.rulesPage = false;
     this.takePicturePage = false;
     this.loadEmotion();
+  }
+
+  f(){
+    new batch(this.piImage);
   }
 
   emotionSelect(){
@@ -133,6 +141,7 @@ export class takePictureComponent implements OnInit {
   rules(){ //When this happens, the raspberry pi should be linked
     this.rulesPage = false;
     this.takePicturePage = true;
+    this.piImage = this.image.substring(14)
   }
 
   resetRules(){
