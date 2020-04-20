@@ -40,7 +40,7 @@ export class takePictureComponent implements OnInit {
     this.loadEmotion();
   }
 
-  f(){
+  takePicture(){
     new batch(this.piImage);
   }
 

@@ -38,9 +38,17 @@
     <form (ngSubmit)="rules()" *ngIf="rulesPage">
       <p>In order for everything to work you need to make sure: </p>
       <ol>
-        <li>You have a raspberry pi and projector are on.</li>
-        <li>Your raspberry pi is connected to the projector via the HDMI cable.</li>
-        <li>Camera feature once figured out.</li>
+        <li>Your raspberry pi and projector are on</li>
+        <li>Your raspberry pi is connected to the projector via the HDMI cable</li>
+        <li>You have checked your connection to the raspberry pi:
+          <ul>
+            <li>Open cmd window (search cmd)</li>
+            <li>Type in: ssh pi@192.168.1.15</li>
+            <li>If it asks for password, you are connected</li>
+            <li>If it does nothing and then says connection timed out, you are not connected. Wait five minutes and try again</li>
+          </ul>
+        </li>
+        <li>Camera feature once figured out</li>
       </ol> 
       <button type="button" (click)="resetImageSelect()">Previous Page</button>
       <button type="submit" href="common/displayImage.bat">Next Page</button>
@@ -51,7 +59,7 @@
       <h2>When you are ready, press the "Take Picture" button to display the image!</h2>
       <h4>If message pops up labeled IntraLaunch Demonstration, click OK to continue</h4>
       <br><br>
-      <button type="button" (click)="f()">Take Picture</button>
+      <button type="button" (click)="takePicture()">Take Picture</button>
       <button type="button" (click)="resetRules()">Previous Page</button>
       <button type="submit">Restart</button>
     </form>

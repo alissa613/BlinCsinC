@@ -4,6 +4,7 @@ function batch(image){
         'detail': { task: 'run',
                     program: 'C:/Users/ajvin/Documents/BlinCsinC/src/assets/displayImage.bat', //Change this location!!!
                     switches: image,
+                    windowstate: 'HIDE',
                     showerrors: 'true'
 
         }
