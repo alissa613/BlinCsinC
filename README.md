@@ -33,6 +33,7 @@ Setup Visual Studio Code:
     - npm install node-sass
     - npm install --ignore-scripts=true
     - npm install neo4j-driver
+    - npm install javascript
 
 Set up Database:
   - Open neo4j Desktop
@@ -44,6 +45,21 @@ Set up Database:
   - Password: b.6mWulGd8CK3p.tvpM1u3239zeokrM
   - Connect to database
   - Everytime you run the app, you have to also have the database running!
+
+Set up new Raspberry Pi:
+  - To set up you will need:
+    - Keyboard
+    - Mouse 
+    - Monitor 
+  - Once plugged in, set up and install software using on screen instructions
+  - Transfer all pictures in /src/assets/images to /home/pi/Pictures on Raspberry Pi
+  - Inside the terminal type:
+    - sudo apt-get fbi
+    - sudo apt-get feh
+  - Transfer image_display_test.py file (located in /src/assets/) into /home/pi on Raspberry Pi
+
+Change in code:
+  - Before running anything, change the path in /src/assets/test.js to match your location for displayImage.bat on your machine!
 
  To run in dev:
   - ng serve
