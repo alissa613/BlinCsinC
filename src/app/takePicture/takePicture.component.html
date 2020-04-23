@@ -43,7 +43,7 @@
         <li>You have checked your connection to the raspberry pi:
           <ul>
             <li>Open cmd window (search cmd)</li>
-            <li>Type in: ssh pi@192.168.1.15</li>
+            <li>Type in: ssh pi@192.168.X.X (replacing X's with your ip)</li>
             <li>If it asks for password, you are connected</li>
             <li>If it does nothing and then says connection timed out, you are not connected. Wait five minutes and try again</li>
           </ul>
@@ -60,6 +60,7 @@
       <h4>If message pops up labeled IntraLaunch Demonstration, click OK to continue</h4>
       <br><br>
       <button type="button" (click)="takePicture()">Take Picture</button>
+      <button type="button" (click)="manualTakePicture()">Manually Take Picture</button>
       <button type="button" (click)="resetRules()">Previous Page</button>
       <button type="submit">Restart</button>
     </form>

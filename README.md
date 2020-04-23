@@ -57,9 +57,13 @@ Set up new Raspberry Pi:
     - sudo apt-get fbi
     - sudo apt-get feh
   - Transfer image_display_test.py file (located in /src/assets/) into /home/pi on Raspberry Pi
+  -Find your pi's ip address from the terminal
+    -type ifconfig
+    -record the number labelled inet of format 192.168.X.X
 
 Change in code:
   - Before running anything, change the path in /src/assets/test.js to match your location for displayImage.bat on your machine!
+  - Change the "192.168.1.15" inside of displayImage.bat to your 192.168.X.X recorded earlier
 
  To run in dev:
   - ng serve
@@ -67,6 +71,6 @@ Change in code:
   - Connect raspberry pi to projector via hdmi
   - check if laptop connected to raspberry pi:
     - Open cmd window (search cmd)
-    - Type in: ssh pi@192.168.1.15
+    - Type in: ssh pi@192.168.X.X (replacing X's with your ip)
     - If it asks for password, you are connected
     - If it does nothing and then says connection timed out, you are not connected. Wait five minutes and try again
