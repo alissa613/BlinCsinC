@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AngularService } from '../common/angular.service';
 
+declare var moveRPtoPC:any;
+
 @Component({
   selector: 'main',
   templateUrl: './main.component.html',
@@ -15,22 +17,12 @@ export class mainComponent implements OnInit {
   constructor(private fb: FormBuilder, private neo4j: AngularService) {}
 
   ngOnInit(){
-
+    
   }
+
+  uploadImages(){
+    new moveRPtoPC();
+  }
+
   
-  test(){
-    console.log("Test")
-    const query = 'MATCH (l:User) WHERE l.username= "aaaa" return id(l)'
-
-    this.neo4j.run(query).then(res => {
-      this.results = res
-      console.log(res);
-      if (this.results.length == 0){
-        console.log("Incorrect username or password")
-      }
-      else{
-        console.log("Correct username and password")
-      }
-    });
-  }
 }
