@@ -57,22 +57,25 @@ Set up new Raspberry Pi:
     - sudo apt-get fbi
     - sudo apt-get feh
   - Transfer image_display_test.py file (located in /src/assets/) into /home/pi on Raspberry Pi
-  - Install the camera module using:
+  -Find your pi's ip address from the terminal
+    -type ifconfig
+    -record the number labelled inet of format 192.168.X.X
+  Install the camera module using:
     - https://projects.raspberrypi.org/en/projects/getting-started-with-picamera/2
 
 Change in code:
-  - Before running anything:
-    - Change the path in /src/assets/test.js to match your location for movePicturestoPC.bat, movePicturestoRP.bat and displayImage.bat on your machine!
-    - Change the IP address and password in /src/assets/displayImage.bat to your own Raspberry Pi IP address and password!
-      - Find IP address by opening a command terminal on your Raspberry Pi and typing ifconfig wlan0 
-      - Your password is the password used to login to your Raspberry Pi
-
+  - Before running anything, change the path in /src/assets/test.js to match your location for displayImage.bat, movePicturestoRP.bat, and 
+  movePictures.PC.bat on your machine!
+  - Change the path in /src/assets/movePicturestoRP.bat and /src/assets/movePicturestoPC.bat to match your machine
+  - Change the "192.168.1.15" inside of displayImage.bat to your 192.168.X.X recorded earlier
+  
  To run in dev:
   - ng serve
   - turn raspberry pi and projector on
   - Connect raspberry pi to projector via hdmi
   - check if laptop connected to raspberry pi:
     - Open cmd window (search cmd)
-    - Type in: ssh pi@*Your Raspberry Pi IP Address*
+    - Type in: ssh pi@192.168.X.X (replacing X's with your ip)
+
     - If it asks for password, you are connected
     - If it does nothing and then says connection timed out, you are not connected. Wait five minutes and try again
