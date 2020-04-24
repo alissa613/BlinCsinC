@@ -27,6 +27,7 @@ export class takePictureComponent implements OnInit {
   piImage: String;
   images = [];
   emotions = [];
+  manualPicture: boolean;
 
 
   constructor(private fb: FormBuilder, private neo4j: AngularService) {}
@@ -38,6 +39,7 @@ export class takePictureComponent implements OnInit {
     this.rulesPage = false;
     this.takePicturePage = false;
     this.loadEmotion();
+    this.manualPicture = false;
   }
 
   takePicture(){
@@ -147,6 +149,7 @@ export class takePictureComponent implements OnInit {
   resetRules(){
     this.rulesPage = true;
     this.takePicturePage = false;
+    this.manualPicture = false;
   }
 
   resetEverything(){ 
@@ -158,6 +161,7 @@ export class takePictureComponent implements OnInit {
     this.emotion = undefined;
     this.specific = undefined;
     this.image = undefined;
+    this.manualPicture = false;
   }
 
   async loadSelectImage(){
@@ -205,6 +209,10 @@ export class takePictureComponent implements OnInit {
         }
       }
     });
+  }
+
+  manualTakePicture(){
+    this.manualPicture = true;
   }
 
 }
