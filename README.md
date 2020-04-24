@@ -1,8 +1,7 @@
 Hardware:
- - Raspberry Pi 4
- - Camera Module (RPi)
- - iPhone with Berry Cam installed
- - Projector with HDMI 
+ - Raspberry Pi 4 (https://www.amazon.com/gp/product/B07V5JTMV9/ref=ppx_yo_dt_b_asin_title_o01_s01?ie=UTF8&psc=1)
+ - Camera Module (RPi) (https://www.amazon.com/gp/product/B01ER2SKFS/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1)
+ - Projector with HDMI (https://www.amazon.com/gp/product/B07174LM85/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1)
 
 Install:
  - Visual Studio Code (https://code.visualstudio.com/)
@@ -51,6 +50,7 @@ Set up new Raspberry Pi:
     - Keyboard
     - Mouse 
     - Monitor 
+  - Set up Rasberry Pi and Camera Module in case
   - Once plugged in, set up and install software using on screen instructions
   - Transfer all pictures in /src/assets/images to /home/pi/Pictures on Raspberry Pi
   - Inside the terminal type:
@@ -60,11 +60,15 @@ Set up new Raspberry Pi:
   -Find your pi's ip address from the terminal
     -type ifconfig
     -record the number labelled inet of format 192.168.X.X
+  Install the camera module using:
+    - https://projects.raspberrypi.org/en/projects/getting-started-with-picamera/2
 
 Change in code:
-  - Before running anything, change the path in /src/assets/test.js to match your location for displayImage.bat on your machine!
+  - Before running anything, change the path in /src/assets/test.js to match your location for displayImage.bat, movePicturestoRP.bat, and 
+  movePictures.PC.bat on your machine!
+  - Change the path in /src/assets/movePicturestoRP.bat and /src/assets/movePicturestoPC.bat to match your machine
   - Change the "192.168.1.15" inside of displayImage.bat to your 192.168.X.X recorded earlier
-
+  
  To run in dev:
   - ng serve
   - turn raspberry pi and projector on
@@ -72,5 +76,6 @@ Change in code:
   - check if laptop connected to raspberry pi:
     - Open cmd window (search cmd)
     - Type in: ssh pi@192.168.X.X (replacing X's with your ip)
+
     - If it asks for password, you are connected
     - If it does nothing and then says connection timed out, you are not connected. Wait five minutes and try again
