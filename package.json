@@ -17,7 +17,10 @@
     "version": "sync-json -v --property version --source package.json src/lib/package.json"
   },
   "browser": {
-    "child_process": false
+    "child_process": false,
+    "fs": false,
+    "path:": false,
+    "os": false
   },
   "private": false,
   "dependencies": {
@@ -31,14 +34,17 @@
     "@angular/platform-browser-dynamic": "^6.0.0-rc.1",
     "@angular/router": "^6.0.0-rc.1",
     "core-js": "^2.5.4",
+    "count-files": "^2.6.2",
     "fs-extra": "^6.0.0",
     "ibmiotf": "^0.2.41",
     "javascript": "^1.0.0",
     "natives": "^1.1.6",
     "neo4j-driver": "^1.7.6",
+    "node": "^14.0.0",
     "node-cmd": "^3.0.0",
     "node-sass": "^4.13.1",
     "python3": "0.0.1",
+    "react-native-fs": "^2.16.6",
     "rxjs": "^6.0.0-rc.0",
     "temp-dir": "^2.0.0",
     "zone.js": "^0.8.24"

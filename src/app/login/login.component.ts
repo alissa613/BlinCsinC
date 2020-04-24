@@ -4,6 +4,8 @@ import { AngularService } from '../common/angular.service';
 import { Router } from "@angular/router";
 import { GlobalConstants } from '../common/global-constants'
 
+declare var movePCtoRP: any;
+
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -77,6 +79,17 @@ export class LoginComponent implements OnInit {
         }
         else{
           console.log("Correct username and password")
+          const query = 'MATCH (a:Image) RETURN a.location';
+
+          this.neo4j.run(query).then(res => {
+            this.results = res;
+            console.log(res)
+            var length = this.results.length;
+            for(var i=0; i<length; i++){
+              new movePCtoRP(res[i][0])
+            }
+          });
+
           GlobalConstants.id = res[0][0]
           console.log("Id global: " + GlobalConstants.id)
           this.router.navigate(['/main'])
