@@ -42,7 +42,7 @@
     "neo4j-driver": "^1.7.6",
     "node": "^14.0.0",
     "node-cmd": "^3.0.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "python3": "0.0.1",
     "react-native-fs": "^2.16.6",
     "rxjs": "^6.0.0-rc.0",
